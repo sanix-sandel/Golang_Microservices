@@ -15,11 +15,12 @@ func main() {
 	l := log.New(os.Stdout, "product-api", log.LstdFlags)
 	hh := handlers.NewHello(l)
 	gb := handlers.NewGoodbye(l)
+	lp := handlers.NewProducts(l)
 
 	sm := http.NewServeMux()
 	sm.Handle("/", hh)
 	sm.Handle("/goodbye", gb)
-
+	sm.Handle("/products", lp)
 	//Setup server
 	s := &http.Server{
 		Addr:         ":8000",
